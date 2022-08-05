@@ -1,3 +1,4 @@
+import java.util.*;
 /*
  * @lc app=leetcode id=232 lang=java
  *
@@ -6,25 +7,42 @@
 
 // @lc code=start
 class MyQueue {
+    public Stack<Integer> firstStack;
+    public Stack<Integer> secondStack;
 
     public MyQueue() {
-        
+        firstStack = new Stack<Integer>();
+        secondStack = new Stack<Integer>();
     }
     
     public void push(int x) {
-        
+        firstStack.push(x);
     }
     
     public int pop() {
-        
+        if(secondStack.isEmpty()){
+            while(!firstStack.isEmpty()){
+                secondStack.push(firstStack.pop());
+            }
+            return secondStack.pop();
+        } else {
+            return secondStack.pop();
+        }
     }
     
     public int peek() {
-        
+        if(secondStack.isEmpty()){
+            while(!firstStack.isEmpty()){
+                secondStack.push(firstStack.pop());
+            }
+            return secondStack.peek();
+        } else {
+            return secondStack.peek();
+        }
     }
     
     public boolean empty() {
-        
+        return firstStack.isEmpty() && secondStack.isEmpty();
     }
 }
 

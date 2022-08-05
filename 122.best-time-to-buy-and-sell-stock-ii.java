@@ -7,23 +7,30 @@
 // @lc code=start
 class Solution {
     public int maxProfit(int[] prices) {
-<<<<<<< HEAD
-        int result = 0;
-        int start = 0;
-        int end = 0;
-        while(end < prices.length && start < prices.length){
-            if(prices[end] < prices[start]){
-                start = end;
-            } else {
-                result += prices[end] - prices[start];
-                start = end;
-                end++;
-            }
+        // int result = 0;
+        // int start = 0;
+        // int end = 0;
+        // while(end < prices.length && start < prices.length){
+        //     if(prices[end] < prices[start]){
+        //         start = end;
+        //     } else {
+        //         result += prices[end] - prices[start];
+        //         start = end;
+        //         end++;
+        //     }
+        // }
+        // return result;
+        int left = 0;
+        int right = 1;
+        int sum = 0;
+        while(left < prices.length && right < prices.length){
+            if(prices[right] > prices[left]){
+                sum += prices[right] - prices[left];
+            } 
+            right++;
+            left++;
         }
-        return result;
-=======
-        
->>>>>>> 88bcb35e9f47686d3ec8a23538665cd62ff8c8d7
+        return sum;
     }
 }
 // @lc code=end
